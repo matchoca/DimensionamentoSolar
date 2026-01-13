@@ -1,0 +1,67 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Garante que padding não aumente a largura */
+}
+
+select:invalid {
+  color: gray;
+}
+
+.consumo {
+  width: 30%;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #2ecc71; /* Verde Energia */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #27ae60;
+}
+
+.btn-logout {
+  background-color: #e74c3c;
+  margin-bottom: 20px;
+}
+
+#resultado {
+  margin-top: 20px;
+  background-color: #e8f5e9;
+  padding: 10px;
+  border-radius: 5px;
+}
