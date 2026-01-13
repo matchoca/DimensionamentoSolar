@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt´BR">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,98 +7,166 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app-screen" class="container">
+    <div class="container">
         <header>
             <h1>Dimensionador Solar v1.0</h1>
         </header>
 
-            <h3>Dados do Cliente:</h3>
+        <div class="layout">
 
-            <label>Nome:</label>
-            <input type="text" id="nomeCliente" placeholder="Nome">
+            <div class="coluna coluna-1">
 
-            <label>Cidade:</label>
-            <select required id="select-cidade">
-                <option value="" disabled selected hidden>Cidade</option>
-                <option value="pinhal">Balneário Pinhal</option>
-                <option value="portoAlegre">Porto Alegre</option>
-            </select> 
+                <h2>Dados do Cliente:</h2>
 
-            <label>Orientação do telhado:</label>
-            <select id="select-orientacao">
-                <option value="" disabled selected hidden></option>
-                <option value="norte">Norte</option>
-                <option value="nLesteNOeste">NE/NO</option>
-                <option value="lesteOeste">L/O</option>
-            </select> 
+                <label>Cliente:</label>
+                <input type="text" id="nomeCliente" placeholder="Nome">
 
-            <label>Classe de Consumo:</label>
-            <select id="select-classe-consumo">
-                <option value="" disabled selected hidden></option>
-                <option value="residencial">Residencial</option>
-                <option value="comercial">Comercial</option>
-                <option value="industrial">Industrial</option>
-            </select>
+                <div class="dados-cliente">
 
-            <label># Fases:</label> 
-            <select id="select-fases">
-                <option value="" disabled selected hidden></option>
-                <option value="monof">1</option>
-                <option value="bif">2</option>
-                <option value="trif">3</option>
-            </select>
+                <div class="campo-dados-cliente">
 
-            <label>Tensão:</label> 
-            <select id="select-tensao">
-                <option value="" disabled selected hidden></option>
-                <option value="127">127/220</option>
-                <option value="220">220/380</option>
-            </select>
+                <label>Cidade:</label>
+                <select required id="select-cidade">
+                    <option value="" disabled selected hidden>Cidade</option>
+                    <option value="pinhal">Balneário Pinhal</option>
+                    <option value="portoAlegre">Porto Alegre</option>
+                </select> 
 
-            <label>Disjuntor:</label>
-            <input type="number" id="disjuntor" placeholder="(A)">
+                </div>
+                <div class="campo-dados-cliente">
 
-            <h3>Consumo:</h3>
-            <input type="number" class="consumo" id="consumoJan" placeholder="Jan">
-            <input type="number" class="consumo" id="consumoFev" placeholder="Fev">
-            <input type="number" class="consumo" id="consumoMar" placeholder="Mar">
-            <input type="number" class="consumo" id="consumoAbr" placeholder="Abr">
-            <input type="number" class="consumo" id="consumoMai" placeholder="Mai">
-            <input type="number" class="consumo" id="consumoJun" placeholder="Jun">
-            <input type="number" class="consumo" id="consumoJul" placeholder="Jul">
-            <input type="number" class="consumo" id="consumoAgo" placeholder="Ago">
-            <input type="number" class="consumo" id="consumoSet" placeholder="Set">
-            <input type="number" class="consumo" id="consumoOut" placeholder="Out">
-            <input type="number" class="consumo" id="consumoNov" placeholder="Nov">
-            <input type="number" class="consumo" id="consumoDez" placeholder="Dez">
-            <br>
-            <label>Média: <output id="consumoMedio">0</output> kWh</label>
+                <label>Orientação do telhado:</label>
+                <select id="select-orientacao">
+                    <option value="" disabled selected hidden></option>
+                    <option value="norte">Norte</option>
+                    <option value="nLesteNOeste">NE/NO</option>
+                    <option value="lesteOeste">L/O</option>
+                </select> 
 
-            <h3>Potência Sugerida: <output id="potenciaSugerida">0</output> kW</h3>
+                </div>
+                <div class="campo-dados-cliente">
 
-            <br>
+                <label>Classe de Consumo:</label>
+                <select id="select-classe-consumo">
+                    <option value="" disabled selected hidden></option>
+                    <option value="residencial">Residencial</option>
+                    <option value="comercial">Comercial</option>
+                    <option value="industrial">Industrial</option>
+                </select>
 
-            <h3>Dimensionamento do Sistema:</h3>
-            <label>Selecione o Módulo:</label>
-            <select id="select-modulo"></select>
-            <label>Quantidade:</label>
-            <input type="number" id="qtModulo">
-        
-            <label>Selecione o Inversor:</label>
-            <select id="select-inversor"></select>
-            <label>Quantidade:</label>
-            <input type="number" id="qtInversor">
+                </div>
+                <div class="campo-dados-cliente">
 
-            <h3>Potência Dimensionada: <output id="potenciaReal">0</output> kWp</h3>
+                <label># Fases:</label> 
+                <select id="select-fases">
+                    <option value="" disabled selected hidden></option>
+                    <option value="monof">1</option>
+                    <option value="bif">2</option>
+                    <option value="trif">3</option>
+                </select>
 
-            <label>FDI:</label>
-            <!-- Inserir Calculo -->
+                </div>
+                <div class="campo-dados-cliente">
 
-            <label>Área Necessária:</label>
-            <!-- Inserir Calculo -->
-            
-            <label>Peso:</label>
-            <!-- Inserir Calculo -->
+                <label>Tensão:</label> 
+                <select id="select-tensao">
+                    <option value="" disabled selected hidden></option>
+                    <option value="127">127/220</option>
+                    <option value="220">220/380</option>
+                </select>
+
+                </div>
+                <div class="campo-dados-cliente">
+
+                <label>Disjuntor:</label>
+                <input type="number" id="disjuntor" placeholder="(A)">
+
+                </div>
+                </div>
+
+                <h2>Consumo:</h2>
+                <div class="dados-consumo">
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoJan" placeholder="Jan">
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoFev" placeholder="Fev">
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoMar" placeholder="Mar">
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoAbr" placeholder="Abr">
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoMai" placeholder="Mai">
+                
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoJun" placeholder="Jun">
+                
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoJul" placeholder="Jul">
+                
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoAgo" placeholder="Ago">
+                
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoSet" placeholder="Set">
+                
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoOut" placeholder="Out">
+                
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoNov" placeholder="Nov">
+                
+                    </div>
+                    <div class="campo-dados-consumo">
+                <input type="number" class="consumo" id="consumoDez" placeholder="Dez">
+                    </div>
+                </div>
+                <br>
+                <label>Média: <output id="consumoMedio">0</output> kWh</label>
+
+                <h2>Potência Sugerida: <output id="potenciaSugerida">0</output> kW</h2>
+            </div>
+
+                <div class="coluna coluna-2">
+
+                <h2>Dimensionamento do Sistema:</h2>
+                
+                <label>Selecione o Módulo:</label>
+                <select id="select-modulo"></select>
+                <label>Quantidade:</label>
+                <input type="number" id="qtModulo">
+
+                <label>Selecione o Inversor:</label>
+                <select id="select-inversor"></select>
+                <label>Quantidade:</label>
+                <input type="number" id="qtInversor">
+
+                <h2>Potência Dimensionada: <output id="potenciaReal">0</output> kWp</h2>
+
+                <label>FDI:</label>
+                <!-- Inserir Calculo -->
+
+                <label>Área Necessária:</label>
+                <!-- Inserir Calculo -->
+                
+                <label>Peso:</label>
+                <!-- Inserir Calculo -->
+             </div>
+
+             <div class="coluna coluna-3">
+                <h2>Gráfico - Consumo x Geração:</h2>
+             </div>
+
+        </div>
     </div>
 
     <script src="dados.js"></script>

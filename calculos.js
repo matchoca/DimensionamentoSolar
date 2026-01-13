@@ -68,6 +68,7 @@ inputs.forEach(input => input.addEventListener('input', atualizarTudo));
 const selectOrientacao = document.getElementById('select-orientacao');
 selectOrientacao.addEventListener('change', atualizarTudo);
 
+// 4. Calcula a potência real com base no módulo e quantidade
 function atualizaPotenciaReal () {
 
     const selectModulo = document.getElementById('select-modulo');
@@ -92,6 +93,7 @@ function atualizaPotenciaReal () {
     outputPotenciaReal.textContent = potenciaReal.toFixed(2);
 }
 
+// 5. Conecta os eventos para potência real
 const selectModulo = document.getElementById('select-modulo');
 const inputQuantidade = document.getElementById('qtModulo');
 
