@@ -68,6 +68,41 @@ inputs.forEach(input => input.addEventListener('input', atualizarTudo));
 const selectOrientacao = document.getElementById('select-orientacao');
 selectOrientacao.addEventListener('change', atualizarTudo);
 
+function atualizaPotenciaReal () {
 
-// Calcula uma vez ao carregar a página
+    const selectModulo = document.getElementById('select-modulo');
+    const inputQuantidadeModulos = document.getElementById('qtModulo');
+    const outputPotenciaReal = document.getElementById('potenciaReal');
+
+    if (!selectModulo || !inputQuantidadeModulos || !outputPotenciaReal) return;
+
+    const idModuloSelecionado = Number(selectModulo.value);
+    const quantidadeModulos = Number(inputQuantidadeModulos.value);
+
+    const moduloSelecionado = modulosDB.find(m => m.id === idModuloSelecionado);
+
+
+    if (!moduloSelecionado || isNaN(quantidadeModulos) || quantidadeModulos <= 0) {
+        outputPotenciaReal.textContent = "0";
+        return;
+    }
+
+    const potenciaReal = (moduloSelecionado.potencia * quantidadeModulos)/1000;
+
+    outputPotenciaReal.textContent = potenciaReal.toFixed(2);
+}
+
+const selectModulo = document.getElementById('select-modulo');
+const inputQuantidade = document.getElementById('qtModulo');
+
+if (selectModulo) {
+    selectModulo.addEventListener('change', atualizaPotenciaReal);
+}
+
+if (inputQuantidade) {
+    inputQuantidade.addEventListener('input', atualizaPotenciaReal);
+}
+
+carregarModulos();
+carregarInversores();
 atualizarTudo();

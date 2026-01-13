@@ -7,22 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="login-screen" class="container">
-        <h2>Acesso Engenharia</h2>
-        <p>Insira suas credenciais para dimensionar.</p>
-        <input type="text" id="username" placeholder="Usuário">
-        <input type="password" id="password" placeholder="Senha">
-        <button onclick="fazerLogin()">Entrar</button>
-        <p id="error-msg" style="color: red; display: none;">Dados inválidos</p>
-    </div>
-
-    <div id="app-screen" class="container hidden">
+    <div id="app-screen" class="container">
         <header>
             <h1>Dimensionador Solar v1.0</h1>
-            <button onclick="sair()" class="btn-logout">Sair</button>
         </header>
 
-        <section class="form-section">
             <h3>Dados do Cliente:</h3>
 
             <label>Nome:</label>
@@ -86,7 +75,8 @@
             <label>Média: <output id="consumoMedio">0</output> kWh</label>
 
             <h3>Potência Sugerida: <output id="potenciaSugerida">0</output> kW</h3>
-            <!-- Inserir Calculo -->
+
+            <br>
 
             <h3>Dimensionamento do Sistema:</h3>
             <label>Selecione o Módulo:</label>
@@ -99,8 +89,7 @@
             <label>Quantidade:</label>
             <input type="number" id="qtInversor">
 
-            <h3>Potência Dimensionada:</h3>
-            <!-- Inserir Calculo -->
+            <h3>Potência Dimensionada: <output id="potenciaReal">0</output> kWp</h3>
 
             <label>FDI:</label>
             <!-- Inserir Calculo -->
@@ -113,7 +102,6 @@
     </div>
 
     <script src="dados.js"></script>
-    <script src="login.js"></script>
     <script src="calculos.js"></script>
 </body>
 </html>
