@@ -1,9 +1,9 @@
 const modulosDB = [
-    { id: 1, marca: "ASTRONERGY", modelo: "CHSM72N(DG)F-BH-575W", potencia: 575, vmppt: 42.94, imppt: 13.39, voc: 51.10, isc: 14.19 }
+    { id: 1, marca: "ASTRONERGY", modelo: "CHSM72N(DG)F-BH-575W", potencia: 575, vmppt: 42.94, imppt: 13.39, voc: 51.10, isc: 14.19, moduleHeight: 2.278, moduleWidth: 1.134, weight: 32.1 }
 ];
 
 const inversoresDB = [
-    {id: 1, marca: "DEYE", modelo: "SUN-5K-G05P1-EU-AM", potenciaNominal: 5, maxInput: 7.5, vInMax: 550, iInMax: 27, iOut: 25}
+    {id: 1, marca: "DEYE", modelo: "SUN-5K-G05P1-EU-AM", potenciaNominal: 5, potenciaMaximaIn: 7.5, vInMax: 550, iInMax: 27, iOut: 25}
 ];
 
 const irradianciaMensal = [

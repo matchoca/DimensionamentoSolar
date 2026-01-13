@@ -29,7 +29,7 @@ const consumoMedio = quantidade > 0 ? soma / quantidade : 0;
 
 
 // Mostra na tela
-document.getElementById('consumoMedio').textContent = consumoMedio.toFixed(1);
+document.getElementById('consumoMedio').textContent = consumoMedio.toFixed(0);
 
 
 // Guardamos o valor globalmente para outros cálculos
@@ -72,16 +72,22 @@ selectOrientacao.addEventListener('change', atualizarTudo);
 function atualizaPotenciaReal () {
 
     const selectModulo = document.getElementById('select-modulo');
+    const selectInversor = document.getElementById('select-inversor');
     const inputQuantidadeModulos = document.getElementById('qtModulo');
+    const inputQuantidadeInversor = document.getElementById('qtInversor');
     const outputPotenciaReal = document.getElementById('potenciaReal');
+    const outputFDI = document.getElementById('fdi');
+    const outputArea = document.getElementById('areaTotal');
+    const outputPeso = document.getElementById('pesoM2');
 
-    if (!selectModulo || !inputQuantidadeModulos || !outputPotenciaReal) return;
+    if (!selectModulo || !inputQuantidadeModulos || !selectInversor || !inputQuantidadeInversor || !outputPotenciaReal || !outputFDI || !outputArea || !outputPeso) return;
 
-    const idModuloSelecionado = Number(selectModulo.value);
+    const idModuloSelecionado = parseInt(selectModulo.value);
+    const idInversorSelecionado = parseInt(selectInversor.value);
     const quantidadeModulos = Number(inputQuantidadeModulos.value);
+    const quantidadeInversores = Number(inputQuantidadeInversor.value);
 
     const moduloSelecionado = modulosDB.find(m => m.id === idModuloSelecionado);
-
 
     if (!moduloSelecionado || isNaN(quantidadeModulos) || quantidadeModulos <= 0) {
         outputPotenciaReal.textContent = "0";
@@ -90,19 +96,46 @@ function atualizaPotenciaReal () {
 
     const potenciaReal = (moduloSelecionado.potencia * quantidadeModulos)/1000;
 
+    const inversorSelecionado = inversoresDB.find(i => i.id === idInversorSelecionado);
+
+     if (!inversorSelecionado || isNaN(quantidadeInversores) || quantidadeInversores <= 0) {
+        outputFDI.textContent = "0";
+        return;
+    }
+
+      const fdi = potenciaReal / (inversorSelecionado.potenciaNominal * quantidadeInversores);
+
+      const areaTotal = moduloSelecionado.moduleHeight * moduloSelecionado.moduleWidth * quantidadeModulos;
+
+    const pesoTotal = (moduloSelecionado.weight * quantidadeModulos) / areaTotal;
+  
     outputPotenciaReal.textContent = potenciaReal.toFixed(2);
+    outputFDI.textContent = fdi.toFixed(2);
+    outputArea.textContent = areaTotal.toFixed(2);
+    outputPeso.textContent = pesoTotal.toFixed(2);
+
 }
 
 // 5. Conecta os eventos para potência real
 const selectModulo = document.getElementById('select-modulo');
-const inputQuantidade = document.getElementById('qtModulo');
+const selectInversor = document.getElementById('select-inversor');
+const inputQuantidadeModulos = document.getElementById('qtModulo');
+const inputQuantidadeInversor = document.getElementById('qtInversor');
 
 if (selectModulo) {
     selectModulo.addEventListener('change', atualizaPotenciaReal);
 }
 
-if (inputQuantidade) {
-    inputQuantidade.addEventListener('input', atualizaPotenciaReal);
+if (selectInversor) {
+    selectInversor.addEventListener('change', atualizaPotenciaReal);
+}
+
+if (inputQuantidadeModulos) {
+    inputQuantidadeModulos.addEventListener('input', atualizaPotenciaReal);
+}
+
+if (inputQuantidadeInversor) {
+    inputQuantidadeInversor.addEventListener('input', atualizaPotenciaReal);
 }
 
 carregarModulos();
