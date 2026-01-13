@@ -34,6 +34,8 @@ document.getElementById('consumoMedio').textContent = consumoMedio.toFixed(0);
 
 // Guardamos o valor globalmente para outros cálculos
 window.consumoMedioAtual = consumoMedio;
+
+atualizarGrafico();
 }
 
 
@@ -114,6 +116,8 @@ function atualizaPotenciaReal () {
     outputArea.textContent = areaTotal.toFixed(2);
     outputPeso.textContent = pesoTotal.toFixed(2);
 
+    atualizarGrafico();
+
 }
 
 // 5. Conecta os eventos para potência real
@@ -136,6 +140,82 @@ if (inputQuantidadeModulos) {
 
 if (inputQuantidadeInversor) {
     inputQuantidadeInversor.addEventListener('input', atualizaPotenciaReal);
+}
+
+// 6. Cria o grafico de consumo x geração
+
+let grafico = null;
+
+function atualizarGrafico() {
+
+  const ctx = document.getElementById('graficoConsumoGeracao');
+  if (!ctx) return;
+
+  // ----- Consumo mensal vindo dos inputs -----
+  const inputs = document.querySelectorAll('.consumo');
+  const consumoMensal = Array.from(inputs).map(input =>
+    Number(input.value) || 0
+  );
+
+  // ----- Potência real instalada -----
+  const potenciaTexto = document.getElementById('potenciaReal').textContent;
+  const potenciaInstalada = Number(potenciaTexto) || 0;
+
+  // ----- Geração mensal estimada -----
+  const geracaoMensal = irradianciaMensal.map(mes =>
+    potenciaInstalada * mes.valor * 30 * 0.8
+  );
+
+  // ----- Meses -----
+  const meses = irradianciaMensal.map(m => m.mes);
+
+  // ----- Se gráfico já existe, só atualiza -----
+  if (grafico) {
+    grafico.data.labels = meses;
+    grafico.data.datasets[0].data = consumoMensal;
+    grafico.data.datasets[1].data = geracaoMensal;
+    grafico.update();
+    return;
+  }
+
+  // ----- Se ainda não existe, cria o gráfico -----
+  grafico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: meses,
+      datasets: [
+        {
+          label: 'Consumo (kWh)',
+          data: consumoMensal,
+          backgroundColor: '#9e9e9e',
+        borderColor: '#616161',
+          borderWidth: 2,
+          tension: 0.3
+        },
+        {
+          label: 'Geração estimada (kWh)',
+          data: geracaoMensal,
+          backgroundColor: '#ff9800',
+    borderColor: '#ef6c00',
+          borderWidth: 2,
+          tension: 0.3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 }
 
 carregarModulos();
