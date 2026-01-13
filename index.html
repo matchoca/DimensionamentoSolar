@@ -37,7 +37,7 @@
 
                 <label>Orientação do telhado:</label>
                 <select id="select-orientacao">
-                    <option value="" disabled selected hidden></option>
+                    <option value="" disabled selected hidden>-</option>
                     <option value="norte">Norte</option>
                     <option value="nLesteNOeste">NE/NO</option>
                     <option value="lesteOeste">L/O</option>
@@ -48,7 +48,7 @@
 
                 <label>Classe de Consumo:</label>
                 <select id="select-classe-consumo">
-                    <option value="" disabled selected hidden></option>
+                    <option value="" disabled selected hidden>-</option>
                     <option value="residencial">Residencial</option>
                     <option value="comercial">Comercial</option>
                     <option value="industrial">Industrial</option>
@@ -59,7 +59,7 @@
 
                 <label># Fases:</label> 
                 <select id="select-fases">
-                    <option value="" disabled selected hidden></option>
+                    <option value="" disabled selected hidden>-</option>
                     <option value="monof">1</option>
                     <option value="bif">2</option>
                     <option value="trif">3</option>
@@ -70,7 +70,7 @@
 
                 <label>Tensão:</label> 
                 <select id="select-tensao">
-                    <option value="" disabled selected hidden></option>
+                    <option value="" disabled selected hidden>-</option>
                     <option value="127">127/220</option>
                     <option value="220">220/380</option>
                 </select>
@@ -152,14 +152,12 @@
 
                 <h2>Potência Dimensionada: <output id="potenciaReal">0</output> kWp</h2>
 
-                <label>FDI:</label>
+                <label>FDI (overload): <output id="fdi">0</output></label>
                 <!-- Inserir Calculo -->
-
-                <label>Área Necessária:</label>
-                <!-- Inserir Calculo -->
-                
-                <label>Peso:</label>
-                <!-- Inserir Calculo -->
+                <br>
+                <label>Área Necessária: <output id="areaTotal">0</output> m²</label>
+                <br>
+                <label>Peso: <output id="pesoM2">0</output> kg/m²</label>
              </div>
 
              <div class="coluna coluna-3">
