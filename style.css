@@ -5,6 +5,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   margin: 0;
 }
 
@@ -31,7 +32,7 @@ h2 {
   background: #f8f8f8;
   padding: 20px 20px 0 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   overflow-y: auto;
 }
 
@@ -84,6 +85,9 @@ select:invalid {
 }
 
 @media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
   .layout {
     grid-template-columns: 1fr;
     height: auto;
