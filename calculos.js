@@ -32,6 +32,18 @@ function atualizarConsumoMedio() {
 }
 
 // 2. Calcula a potência sugerida com base no consumo
+
+function calculaPerda(orientacao) {
+  switch (orientacao) {
+    case "norte":
+      return 0;
+    case "lesteOeste":
+      return 0.12;
+    default:
+      return 0.06;
+  }
+}
+
 function atualizarPotenciaSugerida() {
   const consumo = window.consumoMedioAtual || 0;
 
@@ -39,9 +51,7 @@ function atualizarPotenciaSugerida() {
 
   const orientacao = document.getElementById("select-orientacao").value;
 
-  let perda = 0.06; // valor padrão
-  if (orientacao === "norte") perda = 0;
-  else if (orientacao === "lesteOeste") perda = 0.12;
+  const perda = calculaPerda(orientacao);
 
   const potenciaSugerida =
     (energiaDiaria * (1 + perda)) / (irradianciaMedia * 0.8);
@@ -228,4 +238,4 @@ function atualizarGrafico() {
 
 carregarModulos();
 carregarInversores();
-atualizarTudo();
+atual;
